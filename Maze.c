@@ -133,9 +133,10 @@ void display_maze(char ** maze, Matrix size, Matrix curr) {
 
 
 
-/*take in a direction and a position, and move the position by one in that direction.
-for example, if the current position is (3,4) and the direction is south, the new position will be (3,5)
-make sure to always call is_in_maze() on the target postion to ensure you don't access memory outside of the array.
+/* 
+   take in a direction and a position, and move the position by one in that direction.
+   for example, if the current position is (3,4) and the direction is south, the new position will be (3,5)
+   make sure to always call is_in_maze() on the target postion to ensure you don't access memory outside of the array 
 */
 void go_forward(Matrix * curr, int dir) {
     switch (dir) {
@@ -158,16 +159,20 @@ void go_forward(Matrix * curr, int dir) {
 
 
 
-/* increment the direction by 1 to turn clockwise or right.
-if the current direction is 3 or west, go back to 0 or north*/
+/*
+   increment the direction by 1 to turn clockwise or right.
+   if the current direction is 3 or west, go back to 0 or north
+*/
 int turn_right(int dir) {
     return (dir + 1) % 4;
 }
 
 
 
-/* decrement the direction by 1 to turn counterclockwise or left.
-if the current direction is 0 or north, go back to 3 or west*/
+/*
+   decrement the direction by 1 to turn counterclockwise or left.
+   if the current direction is 0 or north, go back to 3 or west
+*/
 int turn_left(int dir) {
     return (dir - 1 + 4) % 4; /* add 4 to avoid % on a negative number */
 }
