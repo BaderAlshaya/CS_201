@@ -27,35 +27,32 @@ int main(int argc, char ** argv) {
     Matrix exit;
     int i;
     
-	/* if no filename was entered, abort the program. */
+    /* if no filename was entered, abort the program. */
     if (argc < 2) {
         printf("No maze name was entered. \n");
         return 1;
     }
-
-	
+    
     if (!read_input(argv[1], &size, &entry, &exit, &maze)) {
         printf("The file you tried to open, \"%s\" doesn't exist.\n", argv[1]);
         return 1;
     }
-   
-
-        printf("The unsolved maze: \n");
-        printf("The starting position is (%d,%d) and the end is (%d,%d), from the upper left.\n", entry.rows,  entry.columns,  exit.rows, exit.columns);
-    display_maze(maze, size, exit); /* display the maze before it is solved*/
- 
+    
+    printf("The unsolved maze: \n");
+    printf("The starting position is (%d,%d) and the end is (%d,%d), from the upper left.\n", entry.rows,  entry.columns,  exit.rows, exit.columns);
+    
+    display_maze(maze, size, exit); /* display the maze before it is solved */
     find_path(maze, size, entry, exit); /* solve the maze */
-       
-	 printf("The solved maze:\n");
-        printf("The starting position is (%d,%d) and the end is (%d,%d), from the upper left.\n", entry.rows,  entry.columns,  exit.rows, exit.columns);
-    display_maze(maze, size, exit); /* display the maze after it is solved*/
+    
+    printf("The solved maze:\n");
+    printf("The starting position is (%d,%d) and the end is (%d,%d), from the upper left.\n", entry.rows,  entry.columns,  exit.rows, exit.columns);
+    display_maze(maze, size, exit); /* display the maze after it is solved */
     
     /* deallocate the memory of the maze */
     for (i = 0; i < size.rows; i++)
         free(maze[i]);
     free(maze);
     return 0;
-
 }
 
 
