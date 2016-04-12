@@ -133,7 +133,10 @@ void display_maze(char ** maze, Matrix size, Matrix curr) {
 
 
 
-
+/*take in a direction and a position, and move the position by one in that direction.
+for example, if the current position is (3,4) and the direction is south, the new position will be (3,5)
+make sure to always call is_in_maze() on the target postion to ensure you don't access memory outside of the array.
+*/
 void go_forward(Matrix * curr, int dir) {
     switch (dir) {
         case 0: /* north */
