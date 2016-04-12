@@ -27,7 +27,7 @@ int main(int argc, char ** argv) {
     Matrix exit;
     int i;
     
-	/* If no filename was entered, abort the program. */
+	/* if no filename was entered, abort the program. */
     if (argc < 2) {
         printf("No maze name was entered. \n");
         return 1;
@@ -58,10 +58,7 @@ int main(int argc, char ** argv) {
 
 }
 
-/*
-Coordinates are stored with the convention that maze[x][y] accesses the xth column from the left,
-and the yth row from the top of the maze.
-*/
+
 
 /* read in the maze file and extract all information */
 bool read_input(char * file_dest, Matrix * size, Matrix * entry, Matrix * exit, char *** maze) {
@@ -99,14 +96,14 @@ bool read_input(char * file_dest, Matrix * size, Matrix * entry, Matrix * exit, 
 }
 
 
-/* */
+/*
+	directions are stored as an int, with the convention 0 = north, 1 = east, 2 = south, 3 = west
+*/
 void find_path(char ** maze, Matrix size, Matrix entry, Matrix exit) {
-    Matrix current; /*The current position of the walker within the maze.*/
-	/*
-	Directions are stored as an int, with the convention 0 = north, 1 = east, 2 = south, 3 = west.
-	*/
+    Matrix current; /* the current position of the walker within the maze */
+	
 
-    int dir = 2; /* South */
+    int dir = 2; /* south */
     
     current.rows = entry.rows;
     current.columns = entry.columns;
@@ -145,7 +142,6 @@ void display_maze(char ** maze, Matrix size, Matrix curr) {
 
 
 
-/* */
 void go_forward(Matrix * curr, int dir) {
     switch (dir) {
         case 0: /* north */
@@ -168,7 +164,6 @@ void go_forward(Matrix * curr, int dir) {
 
 
 
-/* */
 int turn_right(int dir) {
     return (dir + 1) % 4;
 }
@@ -176,7 +171,6 @@ int turn_right(int dir) {
 
 
 
-/* */
 int turn_left(int dir) {
     return (dir - 1 + 4) % 4;
 }
@@ -184,7 +178,6 @@ int turn_left(int dir) {
 
 
 
-/* */
 bool is_wall_next_to(char ** maze, Matrix size, Matrix * pos, int dir) {
     Matrix target;
     target.rows = pos->rows;
@@ -198,7 +191,6 @@ bool is_wall_next_to(char ** maze, Matrix size, Matrix * pos, int dir) {
 
 
 
-/* */
 bool is_wall(char ** maze, Matrix size, Matrix pos) {
     if (!is_in_maze(size, pos))
         return true;
@@ -208,7 +200,6 @@ bool is_wall(char ** maze, Matrix size, Matrix pos) {
 
 
 
-/* */
 bool is_in_maze(Matrix size, Matrix pos) {
     if (pos.rows < 0)
         return false;
