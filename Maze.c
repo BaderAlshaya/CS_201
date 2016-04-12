@@ -174,20 +174,23 @@ int turn_left(int dir) {
 
 
 
-
+/* returns true if ther is a wall one square ahead in the chosen direction.
+safe to call on target postions that might be outside of the maze.*/
 bool is_wall_next_to(char ** maze, Matrix size, Matrix * pos, int dir) {
     Matrix target;
     target.rows = pos->rows;
     target.columns = pos->columns;
     
-    go_forward(&target, dir);
+    go_forward(&target, dir); /* go_forward is used on the temporary variable to get its neighbor*/
     return is_wall(maze, size, target);
     
 }
 
 
 
-
+/* return true if the target position is outside the maze or is a wall.
+return false if the target position is not a wall.
+safe to use on coordinates outside of the maze. */
 bool is_wall(char ** maze, Matrix size, Matrix pos) {
     if (!is_in_maze(size, pos))
         return true;
@@ -195,8 +198,8 @@ bool is_wall(char ** maze, Matrix size, Matrix pos) {
 }
 
 
-
-
+/* return false if the target position is outside the maze. otherwise return true.
+ safe to use on coordinates outside of the maze. */
 bool is_in_maze(Matrix size, Matrix pos) {
     if (pos.rows < 0)
         return false;
