@@ -18,7 +18,6 @@ bool is_wall(char ** maze, Matrix size, Matrix pos);
 bool is_in_maze(Matrix size, Matrix pos);
 
 
-
 /* client */
 int main(int argc, char ** argv) {
     char ** maze;
@@ -91,6 +90,7 @@ bool read_input(char * file_dest, Matrix * size, Matrix * entry, Matrix * exit, 
 	free(next_line);
     return true;
 }
+
 
 
 /* directions are stored as an int, with the convention 0 = north, 1 = east, 2 = south, 3 = west */
