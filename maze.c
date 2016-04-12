@@ -86,7 +86,6 @@ bool read_input(char * file_dest, Matrix * size, Matrix * entry, Matrix * exit, 
         }
         fclose(file);
     }
-
 	free(next_line);
     return true;
 }
@@ -96,8 +95,6 @@ bool read_input(char * file_dest, Matrix * size, Matrix * entry, Matrix * exit, 
 /* directions are stored as an int, with the convention 0 = north, 1 = east, 2 = south, 3 = west */
 void find_path(char ** maze, Matrix size, Matrix entry, Matrix exit) {
     Matrix current; /* the current position of the walker within the maze */
-	
-
     int dir = 2; /* south */
     
     current.rows = entry.rows;
