@@ -158,16 +158,18 @@ void go_forward(Matrix * curr, int dir) {
 
 
 
-
+/* increment the direction by 1 to turn clockwise or right.
+if the current direction is 3 or west, go back to 0 or north*/
 int turn_right(int dir) {
     return (dir + 1) % 4;
 }
 
 
 
-
+/* decrement the direction by 1 to turn counterclockwise or left.
+if the current direction is 0 or north, go back to 3 or west*/
 int turn_left(int dir) {
-    return (dir - 1 + 4) % 4;
+    return (dir - 1 + 4) % 4; /* add 4 to avoid % on a negative number */
 }
 
 
